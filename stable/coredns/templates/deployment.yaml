@@ -57,11 +57,12 @@ spec:
       {{- end }}
       containers:
       - name: "coredns"
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: "coredns:latest"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         args: [ "-conf", "/etc/coredns/Corefile" ]
         securityContext:
           allowPrivilegeEscalation: true
+          readOnlyRootFilesystem: false
         volumeMounts:
         - name: config-volume
           mountPath: /etc/coredns
