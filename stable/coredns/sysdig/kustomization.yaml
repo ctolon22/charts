@@ -1,0 +1,8 @@
+resources:
+- all.yaml
+patches:
+- path: ./patches/1690366524_remediate_SecurityContext_runAsNonRoot_for_workload_nvidia-driver-installer.yaml
+  target:
+    kind: DaemonSet
+    name: nvidia-driver-installer
+    namespace: kube-system
